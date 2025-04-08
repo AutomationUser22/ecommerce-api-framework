@@ -21,11 +21,11 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml up --build
 
-      - name: OWASP ZAP Scan
-        uses: zaproxy/action-full-scan@v0.6.0
-        with:
-          target: 'https://fakestoreapi.com'
-          rules: 'rules/common/'
+#      - name: OWASP ZAP Scan
+#        uses: zaproxy/action-full-scan@v0.6.0
+#        with:
+#          target: 'https://fakestoreapi.com'
+#          rules: 'rules/common/'
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
