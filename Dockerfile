@@ -13,4 +13,4 @@ COPY data/ ./data/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Command to run tests
-CMD ["pytest", "--html=report.html", "--self-contained-html"]
+CMD ["pytest", "--html=reports/report.html", "--self-contained-html"]
