@@ -14,6 +14,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Command to run tests
 CMD ["pytest", "--html=reports/report.html", "--self-contained-html"]
-
-# Copy HTML report from docker to project
-COPY ./reports/ reports/
