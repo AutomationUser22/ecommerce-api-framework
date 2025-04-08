@@ -1,0 +1,35 @@
+name: Advanced API Tests
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Setup docker-Compose
+        uses: KengoTODA/actions-setup-docker-compose@v1
+        with:
+          version: '2.14.2' # the full version of `docker-compose` command
+
+      - name: Build and run Docker tests
+        run: |
+          docker-compose -f docker-compose.yml up --build --exit-code-from api-tests
+
+      - name: OWASP ZAP Scan
+        uses: zaproxy/action-full-scan@v0.6.0
+        with:
+          target: 'https://fakestoreapi.com'
+          rules: 'rules/common/'
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report
+          path: reports/
+
