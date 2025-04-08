@@ -1,4 +1,7 @@
 version: '3'
 services:
   api-tests:
-    build: .
+    build:
+      context: .
+    volumes:
+      - ./reports:/app/reports  # Mount reports directory to host
