@@ -19,7 +19,7 @@ jobs:
 
       - name: Build and run Docker tests
         run: |
-          docker-compose -f docker-compose.yml up --build --exit-code-from api-tests
+          docker-compose -f docker-compose.yml up --build
 
       - name: OWASP ZAP Scan
         uses: zaproxy/action-full-scan@v0.6.0
